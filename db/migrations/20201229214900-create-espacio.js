@@ -2,21 +2,32 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Usuarios', {
+    await queryInterface.createTable('Espacios', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      edificioFk: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Edificios',
+          key: 'id',
+        },
+      },
+      piso: {
+        type: Sequelize.INTEGER,
+      },
       nombre: {
         type: Sequelize.STRING,
       },
-      apellido: {
-        type: Sequelize.STRING,
+      habilitado: {
+        type: Sequelize.BOOLEAN,
       },
-      fechaNacimiento: {
-        type: Sequelize.DATEONLY,
+      aforo: {
+        type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +41,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Usuarios');
+    await queryInterface.dropTable('Espacios');
   },
 };
