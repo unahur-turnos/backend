@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Espacios', [
       {
-        edificioFk: 3,
+        EdificioId: 3,
         piso: 1,
         nombre: 'Laboratorio 14',
         habilitado: false,
@@ -13,7 +13,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        edificioFk: 1,
+        EdificioId: 1,
         piso: 0,
         nombre: 'Aula 8',
         habilitado: true,
@@ -22,7 +22,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        edificioFk: 2,
+        EdificioId: 2,
         piso: 0,
         nombre: 'Biblioteca',
         habilitado: true,

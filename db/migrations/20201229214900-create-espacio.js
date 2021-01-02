@@ -9,7 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      edificioFk: {
+      EdificioId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
@@ -18,15 +18,19 @@ module.exports = {
         },
       },
       piso: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       nombre: {
+        allowNull: false,
         type: Sequelize.STRING,
       },
       habilitado: {
+        defaultValue: true,
         type: Sequelize.BOOLEAN,
       },
       aforo: {
+        allowNull: false,
         type: Sequelize.INTEGER,
       },
       createdAt: {

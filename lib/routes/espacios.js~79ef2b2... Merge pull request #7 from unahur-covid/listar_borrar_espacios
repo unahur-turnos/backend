@@ -1,10 +1,10 @@
 import express from 'express';
-import { index, show } from '../controllers/usuario_controller';
+import { index, deleteById } from '../controllers/espacio_controller';
 import { withErrorHandling } from './utils';
 
 const router = express.Router();
 
 router.get('/', withErrorHandling(index));
-router.get('/:id', withErrorHandling(show));
+router.delete('/:id', withErrorHandling(deleteById));
 
 export default router;
