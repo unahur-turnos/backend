@@ -2,9 +2,31 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    const edificios = await queryInterface.bulkInsert(
+      'Edificios',
+      [
+        {
+          nombre: 'Origone A',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          nombre: 'Origone B',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          nombre: 'Malvinas Argentinas',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      { returning: true }
+    );
+
     await queryInterface.bulkInsert('Espacios', [
       {
-        EdificioId: 3,
+        EdificioId: edificios[2].id,
         piso: 1,
         nombre: 'Laboratorio 14',
         habilitado: false,
@@ -13,7 +35,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        EdificioId: 1,
+        EdificioId: edificios[0].id,
         piso: 0,
         nombre: 'Aula 8',
         habilitado: true,
@@ -22,7 +44,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        EdificioId: 2,
+        EdificioId: edificios[1].id,
         piso: 0,
         nombre: 'Biblioteca',
         habilitado: true,
@@ -35,5 +57,6 @@ module.exports = {
 
   down: async (queryInterface, Sequelize) => {
     await queryInterface.bulkDelete('Espacios', null, {});
+    await queryInterface.bulkDelete('Edificios', null, {});
   },
 };
