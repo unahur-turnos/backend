@@ -26,6 +26,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       habilitado: {
+        allowNull: false,
         defaultValue: true,
         type: Sequelize.BOOLEAN,
       },
