@@ -20,7 +20,8 @@
     "lint:eslint": "eslint --fix ./lib",
     "lint:prettier": "prettier --write ./lib",
     "test": "jest --runInBand",
-    "test:watch": "jest --runInBand --watch"
+    "test:watch": "jest --runInBand --watch",
+    "heroku-postbuild": "run-s build db:migrate"
   },
   "nodemonConfig": {
     "exec": "npm run dev",
