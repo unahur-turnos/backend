@@ -26,7 +26,7 @@ module.exports = {
 
     await queryInterface.bulkInsert('Espacios', [
       {
-        EdificioId: edificios[2].id,
+        edificioId: edificios[2].id,
         piso: 1,
         nombre: 'Laboratorio 14',
         habilitado: false,
@@ -35,7 +35,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        EdificioId: edificios[0].id,
+        edificioId: edificios[0].id,
         piso: 0,
         nombre: 'Aula 8',
         habilitado: true,
@@ -44,7 +44,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        EdificioId: edificios[1].id,
+        edificioId: edificios[1].id,
         piso: 0,
         nombre: 'Biblioteca',
         habilitado: true,

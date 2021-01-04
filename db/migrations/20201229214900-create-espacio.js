@@ -9,11 +9,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      EdificioId: {
-        allowNull: false,
+      edificioId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
-          model: 'Edificios',
+          model: 'Edificio',
           key: 'id',
         },
       },
