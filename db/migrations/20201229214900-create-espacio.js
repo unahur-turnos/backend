@@ -10,10 +10,10 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       edificioId: {
-        type: Sequelize.INTEGER,
         allowNull: false,
+        type: Sequelize.INTEGER,
         references: {
-          model: 'Edificio',
+          model: 'Edificios',
           key: 'id',
         },
       },
@@ -26,7 +26,6 @@ module.exports = {
         type: Sequelize.STRING,
       },
       habilitado: {
-        allowNull: false,
         defaultValue: true,
         type: Sequelize.BOOLEAN,
       },
