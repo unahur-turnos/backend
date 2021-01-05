@@ -68,6 +68,9 @@
     "sequelize-cli": "^6.2.0",
     "supertest": "^5.0.0"
   },
+  "optionalDependencies": {
+    "pg-native": "^3.0.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
