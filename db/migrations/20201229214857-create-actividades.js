@@ -2,36 +2,52 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Espacios', {
+    await queryInterface.createTable('Actividads', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      edificioId: {
+      espacioId: {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: {
-          model: 'Edificios',
+          model: 'Espacios',
           key: 'id',
         },
-      },
-      piso: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
       },
       nombre: {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      habilitado: {
+      fechaHoraInicio: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      fechaHoraFin: {
+        allowNull: false,
+        type: Sequelize.DATE,
+      },
+      responsable: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      dniResponsable: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      tipoResponsable: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
+      estado: {
         defaultValue: true,
         type: Sequelize.BOOLEAN,
       },
-      aforo: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
+      requiereControl: {
+        defaultValue: false,
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
@@ -41,10 +57,16 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-    });
-  },
-
+    },
+    {
+      esquema: "public",
+      tableName: "Actividads"
+    },
+    {freezeTableName: true})
+    },
+  
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Espacios');
+    await queryInterface.dropTable('Actividads');
   },
 };
+
