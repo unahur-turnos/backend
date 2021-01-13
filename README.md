@@ -81,4 +81,7 @@ npx sequelize migration:generate --name add-descripcion-to-producto
 
 # Crea un nuevo seeder llamado `edificios`.
 npx sequelize seed:generate --name edificios
+
+# Deshacer la última migración
+npx sequelize db:migrate:undo
 ```
