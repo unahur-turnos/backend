@@ -35,6 +35,10 @@ module.exports = {
         unique: true,
         allowNull: false,
       },
+      rol: {
+        type: Sequelize.STRING,
+        default: 'Invitado',
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
