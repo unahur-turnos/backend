@@ -14,28 +14,29 @@ module.exports = {
         type: Sequelize.STRING,
       },
       apellido: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       contrasenia: {
-        type: Sequelize.STRING,
         allowNull: false,
+        type: Sequelize.STRING,
       },
       dni: {
+        allowNull: false,
         type: Sequelize.INTEGER,
         unique: true,
-        allowNull: false,
       },
-      telofono: {
+      telefono: {
         type: Sequelize.INTEGER,
         unique: true,
       },
       email: {
+        allowNull: false,
         type: Sequelize.STRING,
         unique: true,
-        allowNull: false,
       },
       rol: {
+        allowNull: false,
         type: Sequelize.STRING,
         default: 'Invitado',
       },
