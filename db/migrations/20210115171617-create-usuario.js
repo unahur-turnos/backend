@@ -38,7 +38,7 @@ module.exports = {
       rol: {
         allowNull: false,
         type: Sequelize.STRING,
-        default: 'Invitado',
+        default: 'invitado',
       },
       createdAt: {
         allowNull: false,
