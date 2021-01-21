@@ -1,34 +1,17 @@
-import Actividad from '../models/actividad';
-import Espacio from '../models/espacio';
-import Edificio from '../models/edificio';
-import app from '../app';
-import { cleanDb } from '../../test/db_utils';
+import Actividad from '../lib/models/actividad';
+import Espacio from '../lib/models/espacio';
+import Edificio from '../lib/models/edificio';
+import app from '../lib/app';
+import { cleanDb } from './db_utils';
 import request from 'supertest';
-import Usuario from '../models/usuario';
+import { getToken } from './config';
 
 describe('Actividad controller', () => {
   let token;
   beforeAll(async () => {
     await cleanDb();
 
-    const usuario = {
-      nombre: 'Usuario',
-      apellido: 'Prueba',
-      contrasenia: '1234',
-      dni: 1,
-      telefono: 1,
-      email: 'usuario@gmail.com',
-      rol: 'invitado',
-    };
-
-    await Usuario.create(usuario);
-
-    const login = await request(app).post('/api/usuarios/login').send({
-      dni: usuario.dni,
-      contrasenia: usuario.contrasenia,
-    });
-
-    token = login.body.token;
+    token = await getToken();
 
     const edificios = await Edificio.bulkCreate(
       [

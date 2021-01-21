@@ -1,7 +1,8 @@
-import Edificio from '../models/edificio';
-import app from '../app';
-import { cleanDb } from '../../test/db_utils';
+import Edificio from '../lib/models/edificio';
+import app from '../lib/app';
+import { cleanDb } from './db_utils';
 import request from 'supertest';
+import { getToken } from './config';
 
 describe('Edificio controller', () => {
   let token;
@@ -9,29 +10,12 @@ describe('Edificio controller', () => {
   beforeAll(async () => {
     await cleanDb();
 
+    token = await getToken();
+
     await Edificio.bulkCreate([
       { nombre: 'Malvinas' },
       { nombre: 'Origone A' },
     ]);
-
-    const usuario = {
-      nombre: 'Usuario',
-      apellido: 'Prueba',
-      contrasenia: '1234',
-      dni: 1,
-      telefono: 1,
-      email: 'usuario@gmail.com',
-      rol: 'invitado',
-    };
-
-    await request(app).post('/api/usuarios/registro').send(usuario);
-
-    const login = await request(app).post('/api/usuarios/login').send({
-      dni: usuario.dni,
-      contrasenia: usuario.contrasenia,
-    });
-
-    token = login.body.token;
   });
 
   describe('/edificios', () => {

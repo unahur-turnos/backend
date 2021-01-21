@@ -28,7 +28,6 @@ module.exports = {
       },
       telefono: {
         type: Sequelize.INTEGER,
-        unique: true,
       },
       email: {
         allowNull: false,
