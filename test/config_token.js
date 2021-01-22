@@ -1,6 +1,6 @@
-import request from 'supertest';
-import app from '../lib/app';
 import Usuario from '../lib/models/usuario';
+import app from '../lib/app';
+import request from 'supertest';
 
 export const getToken = async () => {
   const usuario = {
