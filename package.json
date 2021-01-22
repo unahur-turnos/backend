@@ -50,6 +50,7 @@
     "passport-local": "^1.0.0",
     "pg": "^8.3.3",
     "pg-hstore": "^2.3.3",
+    "rollbar": "^2.19.4",
     "sequelize": "^5.x"
   },
   "devDependencies": {
