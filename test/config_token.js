@@ -10,7 +10,7 @@ export const getToken = async () => {
     dni: 1,
     telefono: 1,
     email: 'usuario@gmail.com',
-    rol: 'invitado',
+    rol: 'admin',
   };
 
   await Usuario.create(usuario);
