@@ -1,14 +1,26 @@
 language: node_js
 services:
-- postgresql
+  - postgresql
+addons:
+  postgresql: '12'
+  apt:
+    packages:
+      - postgresql-12
+before_install:
+  # Travis no tiene buen soporte para cambiar la versión de Postgre, ver:
+  # https://travis-ci.community/t/test-against-postgres-12/6768/8
+  - sudo cp /etc/postgresql/10/main/pg_hba.conf /etc/postgresql/12/main/pg_hba.conf
+  - sudo pg_ctlcluster 12 main restart
 before_script:
-- psql -c 'create database travis_ci_test;' -U postgres
-- npm run db:init
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - npm run db:init
 env:
   global:
-  - SQL_USERNAME=postgres
-  - SQL_TEST_DATABASE=travis_ci_test
-  - NODE_ENV=test
+    - SQL_USERNAME=postgres
+    - SQL_TEST_DATABASE=travis_ci_test
+    - SQL_PORT=5433
+    - PGPORT=5433
+    - NODE_ENV=test
 deploy:
   provider: heroku
   app: unahur-covid-api
