@@ -12,5 +12,14 @@ module.exports = {
     });
   },
 
-  down: async (queryInterface, Sequelize) => {},
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.changeColumn('Actividades', 'dniResponsable', {
+      allowNull: false,
+      type: Sequelize.INTEGER,
+    });
+    await queryInterface.changeColumn('Actividades', 'responsable', {
+      allowNull: false,
+      type: Sequelize.STRING,
+    });
+  },
 };
