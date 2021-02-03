@@ -23,7 +23,7 @@ module.exports = {
       },
       nombreCarrera: {
         allowNull: false,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
