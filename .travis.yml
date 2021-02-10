@@ -28,6 +28,6 @@ deploy:
   api_key:
     secure: ZSLM/VCDDxlPwx/jvLuQwhNbUqh6/GU2zsEy0GY5QNWQ67qoNlOdnXsV2IJ7A120XIjP86o7IzP6Qhgdq3YY/EzCl+YIt2Y8E6IAsT+an3n5Wp8uZAFhVpbiL//J4Fo767H2h/qFc877LhU6wXxye/1f7WYBAhHunNQQvMwOCcLZc6ib3PFusghyLSXYztetFs+qrVTrDEERWgyFmy3B6LONt2FPRNR0HqU/LgtBENA6tUgRuo+EihlHXpIJhK9Z/twU3czKo++j2c9Uw0pByXwelmMvQ6pV087gKrX3GCoE3dbodS0TommFHHvoPllUoxejvvdOSI7auOxwwDKXVyVKhP2h0VLpW+wAMBFsNNqqmoNVksaFDjqxLdvh4tTe6a+U+bkdiBLp3jc87PsWufsWe2SnnOSxU8OjV3wx7cgQ8/HibvTsLmje7SJ4XazJmEyz6TZniGvEIodCEXNtc253+VLHdTO1RFQ97qVGNWVToreWI2kS6OxZCijq3QIjveMLMKbPR6SDqX3HTVB92+f5UdixC+hDu1hP6C4xR5qsWmQ6H/O2hwJrhIwBo69+NpScMlWca3yBaPnjxMVzpPL2xXnSJaIerN+l3osMkQnn9yjZKRUymJ98JTuiZxUpWBAAsoOqIAB6LhPqEkABY7i2ogskk/c/F0qpZzA5z3s=
 after_success:
-  - './bin/notify-travis-discord.sh success $WEBHOOK_URL'
+  - if [[ $TRAVIS_BRANCH != "master" ]]; then ./bin/notify-travis-discord.sh success $WEBHOOK_URL; fi
 after_failure:
-  - './bin/notify-travis-discord.sh failure $WEBHOOK_URL'
+  - if [[ $TRAVIS_BRANCH != "master" ]]; then ./bin/notify-travis-discord.sh failure $WEBHOOK_URL; fi
