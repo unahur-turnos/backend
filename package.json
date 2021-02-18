@@ -8,7 +8,6 @@
     "build": "run-s clean transpile",
     "server": "node ./dist/bin/www",
     "dev": "cross-env NODE_ENV=development run-s build db:migrate server",
-    "prod": "cross-env NODE_ENV=production run-s build server",
     "clean": "rimraf dist",
     "db:init": "run-s transpile db:migrate",
     "db:migrate": "sequelize db:migrate",
@@ -21,7 +20,8 @@
     "lint:prettier": "prettier --write ./lib",
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watch",
-    "heroku-postbuild": "run-s build db:migrate"
+    "heroku-postbuild": "run-s build db:migrate",
+    "production": "run-s build db:migrate server"
   },
   "nodemonConfig": {
     "exec": "npm run dev",
