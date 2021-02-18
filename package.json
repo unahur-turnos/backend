@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "main": "dist/bin/www.js",
+  "private": true,
   "scripts": {
     "start": "nodemon",
     "build": "run-s clean transpile",
