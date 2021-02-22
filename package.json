@@ -1,7 +1,7 @@
 {
   "name": "nodejs-api-seed",
   "version": "1.0.2",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "main": "dist/bin/www.js",
   "private": true,
   "scripts": {
