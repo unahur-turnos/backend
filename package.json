@@ -1,7 +1,7 @@
 {
   "name": "nodejs-api-seed",
   "version": "1.0.2",
-  "license": "MIT",
+  "license": "GPL-3.0-or-later",
   "main": "dist/bin/www.js",
   "private": true,
   "scripts": {
@@ -44,6 +44,7 @@
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "express-query-boolean": "^2.0.0",
     "helmet": "^3.22.0",
     "jsonwebtoken": "^8.5.1",
     "luxon": "^1.25.0",
