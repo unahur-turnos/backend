@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Turnos', {
+    await queryInterface.createTable('Autorizaciones', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,10 +28,6 @@ module.exports = {
       estuvoEnContacto: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
-      },
-      fechaHoraIngreso: {
-        type: Sequelize.DATE,
-        default: null,
       },
       createdAt: {
         allowNull: false,
