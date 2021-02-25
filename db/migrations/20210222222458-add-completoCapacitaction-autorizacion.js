@@ -8,6 +8,9 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Autorizaciones', 'completoCapacitaction');
+    await queryInterface.removeColumn(
+      'Autorizaciones',
+      'completoCapacitaction'
+    );
   },
 };
