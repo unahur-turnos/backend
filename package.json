@@ -1,6 +1,6 @@
 {
   "name": "nodejs-api-seed",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "license": "GPL-3.0-or-later",
   "main": "dist/bin/www.js",
   "private": true,
@@ -49,6 +49,7 @@
     "jsonwebtoken": "^8.5.1",
     "luxon": "^1.25.0",
     "morgan": "^1.9.1",
+    "node-cache": "^5.1.2",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
