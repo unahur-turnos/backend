@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.changeColumn('Usuarios', 'telefono', {
       allowNull: false,
-      type: Sequelize.BIGINT,
+      type: Sequelize.STRING,
     });
   },
 
