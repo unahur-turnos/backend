@@ -17,13 +17,16 @@ jobs:
       postgres:
         ports:
           - 5432:5432
-        image: postgres:12
+        image: postgres:12.5-alpine
         env:
-          POSTGRES_PASSWORD: admin1234
+          POSTGRES_DB: turnos_test
+          POSTGRES_USER: turnos
+          POSTGRES_PASSWORD: turnos1234
     env:
       NODE_ENV: test
-      SQL_USERNAME: postgres
-      SQL_TEST_DATABASE: unahur_desapp_test
+      SQL_USERNAME: turnos
+      SQL_PASSWORD: turnos1234
+      SQL_TEST_DATABASE: turnos_test
     steps:
       - uses: actions/checkout@v2
       - id: nvmrc
@@ -32,11 +35,7 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
-      - name: Create database
-        run: ./docker/postgres/init/crear-db.sh
-        env:
-          POSTGRES_PASSWORD: admin1234
       - run: npm ci
-      - run: npm db:init
+      - run: npm run db:init
       - run: npm run lint
       - run: npm test
