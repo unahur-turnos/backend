@@ -1,0 +1,42 @@
+name: Test and deploy
+
+on:
+  push:
+    tags:
+      - '*'
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        ports:
+          - 5432:5432
+        image: postgres:12
+        env:
+          POSTGRES_PASSWORD: admin1234
+    env:
+      NODE_ENV: test
+      SQL_USERNAME: postgres
+      SQL_TEST_DATABASE: unahur_desapp_test
+    steps:
+      - uses: actions/checkout@v2
+      - id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: '${{ steps.nvmrc.outputs.node_version }}'
+      - name: Create database
+        run: ./docker/postgres/init
+        env:
+          POSTGRES_PASSWORD: admin1234
+      - run: npm ci
+      - run: npm db:init
+      - run: npm run lint
+      - run: npm test
