@@ -48,7 +48,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           discord-webhook: ${{ secrets.DISCORD_DESARROLLO_URL }}
-          title: '[${{ github.repository }}]: ${{ github.event.pull_request.title }}'
+          title: '[${{ github.repository }}] ${{ github.event.pull_request.title }}'
           description: 'Ver el pull request en ${{ github.event.pull_request.html_url }}'
   deploy-pruebas:
     if: github.ref == 'refs/heads/master'
@@ -78,6 +78,14 @@ jobs:
           git fetch --unshallow origin
           git remote set-url --push origin ${{ secrets.PRODUCTION_REPOSITORY_URL }}
           git push -f origin HEAD:master
+      - name: Generate release notes
+        env:
+          GREN_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx --package github-release-notes gren release --tags=all --override
+      - name: Generate release notes again (hack)
+        env:
+          GREN_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx --package github-release-notes gren release --tags=all --override
       - name: Get the version
         id: get_version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
