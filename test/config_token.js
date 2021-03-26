@@ -17,9 +17,15 @@ const crearUsuarioDefault = () =>
 
 export const getAuthorizedRequest = async (propietario) => {
   const usuario = propietario || (await crearUsuarioDefault());
-  const token =
-    propietario.id == null ? propietario : generarJWT(usuario.id, usuario.dni);
+  const token = generarJWT(usuario.id, usuario.dni);
 
+  const request = defaults(supertest(app));
+  request.set('Authorization', `Bearer ${token}`);
+
+  return { request };
+};
+
+export const getAuthorizedRequestWithToken = async (token) => {
   const request = defaults(supertest(app));
   request.set('Authorization', `Bearer ${token}`);
 
