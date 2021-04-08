@@ -24,3 +24,10 @@ export const getAuthorizedRequest = async (propietario) => {
 
   return { request };
 };
+
+export const getAuthorizedRequestWithToken = async (token) => {
+  const request = defaults(supertest(app));
+  request.set('Authorization', `Bearer ${token}`);
+
+  return { request };
+};
